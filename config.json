@@ -1,0 +1,23 @@
+{
+  "_hjälp": "sport: 5=padel, 1=tennis, 2=badminton, 3=squash, 4=bordtennis. facilities: slug från anläggningens MATCHi-adress (matchi.se/facilities/<slug>) eller numeriskt facilityId. weekdays: 0=mån ... 4=fre. Tider som STARTAR mellan window_start och window_end räknas.",
+  "sport": 1,
+  "facilities": [
+    "salk",
+    "sparvagenstk",
+    "tskmalmen",
+    "hellastk"
+  ],
+  "weekdays": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "window_start": "17:00",
+  "window_end": "19:00",
+  "require_end_within_window": false,
+  "days_ahead": 14,
+  "request_delay_seconds": 0.7,
+  "ntfy_server": "https://ntfy.sh"
+}
