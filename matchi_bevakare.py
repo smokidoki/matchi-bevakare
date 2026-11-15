@@ -60,7 +60,13 @@ class Slot:
 # --------------------------------------------------------------------------- HTTP
 
 def fetch(path: str, params: dict | None = None, debug_name: str | None = None) -> str:
-    resp = session.get(BASE + path, params=params, timeout=20)
+    for attempt in range(3):
+        resp = session.get(BASE + path, params=params, timeout=20)
+        if resp.status_code != 429:
+            break
+        wait = min(int(resp.headers.get("Retry-After", "0") or 0) or 20 * (attempt + 1), 90)
+        print(f"MATCHi bad oss sakta ner (429), väntar {wait} s", file=sys.stderr)
+        time.sleep(wait)
     resp.raise_for_status()
     if DEBUG and debug_name:
         out = HERE / "debug"

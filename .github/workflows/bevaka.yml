@@ -1,9 +1,9 @@
 name: Bevaka MATCHi
 
 on:
-  schedule:
-    # Var 10:e minut, ca 06–23 svensk tid (GitHub kör i UTC och kan försena körningar några minuter)
-    - cron: "*/10 4-21 * * *"
+  # Schemat är avstängt: MATCHi blockerar GitHubs servrar (403). Kör boten hemifrån istället (se README).
+  # schedule:
+  #   - cron: "*/10 4-21 * * *"
   workflow_dispatch: {}
 
 concurrency:
