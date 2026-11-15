@@ -26,16 +26,19 @@ python matchi_bevakare.py --dry-run --debug                              # visar
 Om inga tider hittas fast det finns lediga: titta i `debug/schedule_*.html`, där ligger det MATCHi
 faktiskt skickade.
 
-## 4. Kör automatiskt på GitHub (gratis)
-1. Skapa ett **publikt** GitHub-repo och ladda upp de här filerna. Publikt repo ger obegränsat med
-   Actions-minuter. Ett privat repo skulle gå över gratiskvoten.
-2. Lägg ämnet som hemlighet: *Settings → Secrets and variables → Actions → New repository secret*,
-   namn `NTFY_TOPIC`.
-3. Gå till fliken *Actions*, aktivera workflows och kör *Bevaka MATCHi* en gång manuellt.
+## 4. Kör automatiskt på din dator
+MATCHi blockerar GitHubs servrar, så boten körs på en dator som är på (Mac, Windows eller Raspberry Pi).
+Hämta koden: **Code → Download ZIP** på GitHub och packa upp den.
 
-Den kör sedan var 10:e minut kl 06–23. Första körningen skickar alla lediga tider som finns just
-nu. Därefter kommer bara nya tider.
-GitHub pausar schemalagda körningar om repot inte har haft någon aktivitet på 60 dagar. Gör då en
-liten commit eller tryck *Enable* igen.
+**Mac:** öppna Terminal i mappen och kör
+```
+bash installera_mac.sh matchi-tennis-DITTÄMNE
+```
+**Windows:** öppna PowerShell i mappen och kör
+```
+powershell -ExecutionPolicy Bypass -File installera_windows.ps1 matchi-tennis-DITTÄMNE
+```
+**Linux/Raspberry Pi:** `NTFY_TOPIC=matchi-tennis-DITTÄMNE python3 matchi_bevakare.py --loop 300`
+(lägg i crontab `@reboot` eller en systemd-tjänst).
 
-**Alternativ:** kör `python matchi_bevakare.py --loop 300` på en dator eller Raspberry Pi som alltid är på.
+Skripten skickar en testnotis och kollar sedan var 5:e minut. Datorn måste vara vaken för att få notiser.
