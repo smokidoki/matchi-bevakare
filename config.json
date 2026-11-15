@@ -2,10 +2,26 @@
   "_hjälp": "sport: 5=padel, 1=tennis, 2=badminton, 3=squash, 4=bordtennis. facilities: slug från anläggningens MATCHi-adress (matchi.se/facilities/<slug>) eller numeriskt facilityId. weekdays: 0=mån ... 4=fre. Tider som STARTAR mellan window_start och window_end räknas.",
   "sport": 1,
   "facilities": [
-    "salk",
-    "sparvagenstk",
-    "tskmalmen",
-    "hellastk"
+    {
+      "id": 22,
+      "name": "SALK",
+      "slug": "salk"
+    },
+    {
+      "id": 122,
+      "name": "Spårvägens TK",
+      "slug": "sparvagenstk"
+    },
+    {
+      "id": 2505,
+      "name": "TSK Malmen",
+      "slug": "tskmalmen"
+    },
+    {
+      "id": 297,
+      "name": "Hellas TK",
+      "slug": "hellastk"
+    }
   ],
   "weekdays": [
     0,

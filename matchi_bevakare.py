@@ -213,6 +213,11 @@ def run_once(cfg: dict, state_path: Path, dry_run: bool) -> int:
     today_iso = datetime.now(TZ).date().isoformat()
 
     for entry in cfg["facilities"]:
+        if isinstance(entry, dict):  # {"id": 22, "name": "SALK", "slug": "salk"} – ingen extra uppslagning
+            slug = entry.get("slug", "")
+            fac_cache[slug or str(entry["id"])] = [str(entry["id"]), entry.get("name", slug),
+                                                   f"{BASE}/facilities/{slug}" if slug else BASE]
+            entry = slug or str(entry["id"])
         entry = str(entry).strip()
         try:
             if entry not in fac_cache:
